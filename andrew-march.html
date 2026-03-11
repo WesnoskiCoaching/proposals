@@ -4,375 +4,369 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Andrew March — Precision Engineering | Wesnoski Coaching</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #000000;
+            color: #ffffff;
             line-height: 1.65;
-            color: #f5f5f5;
-            background: #0a0a0a;
         }
-        
+
         .container {
-            max-width: 1000px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 80px 40px;
         }
-        
-        header {
-            margin-bottom: 70px;
-        }
-        
+
+        /* HEADER */
+        header { margin-bottom: 80px; }
+
         .logo {
-            font-size: 12px;
-            letter-spacing: 3px;
+            font-size: 11px;
+            letter-spacing: 4px;
             text-transform: uppercase;
-            color: #888;
-            margin-bottom: 30px;
-            font-weight: 500;
+            color: #3B82F6;
+            font-weight: 600;
+            margin-bottom: 32px;
         }
-        
+
         h1 {
-            font-size: 56px;
+            font-size: 60px;
             font-weight: 700;
-            margin-bottom: 12px;
-            line-height: 1.1;
+            line-height: 1.05;
+            letter-spacing: -1.5px;
             color: #ffffff;
+            margin-bottom: 14px;
         }
-        
+
         .subtitle {
             font-size: 18px;
-            color: #aaa;
+            color: #666666;
             font-weight: 300;
+            letter-spacing: -0.2px;
         }
-        
+
         .divider {
-            width: 60px;
+            width: 48px;
             height: 3px;
-            background: #ffffff;
-            margin: 40px 0 40px 0;
+            background: #3B82F6;
+            margin: 44px 0;
         }
-        
-        .section {
-            margin-bottom: 70px;
-        }
-        
+
+        /* SECTIONS */
+        .section { margin-bottom: 80px; }
+
         h2 {
-            font-size: 32px;
-            font-weight: 700;
-            margin-bottom: 30px;
-            color: #ffffff;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        h3 {
-            font-size: 16px;
+            font-size: 11px;
             font-weight: 600;
-            margin-top: 30px;
-            margin-bottom: 12px;
-            color: #ffffff;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 4px;
+            color: #3B82F6;
+            margin-bottom: 28px;
         }
-        
+
+        h3 {
+            font-size: 22px;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 14px;
+            letter-spacing: -0.3px;
+        }
+
         p {
             font-size: 16px;
+            color: #cccccc;
+            line-height: 1.8;
             margin-bottom: 18px;
-            color: #ddd;
-            line-height: 1.75;
         }
-        
+
+        strong { color: #ffffff; font-weight: 600; }
+
+        /* SITUATION BOX */
         .situation-box {
-            background: rgba(255,255,255,0.05);
-            border-left: 4px solid #ffffff;
-            padding: 30px;
-            margin: 40px 0;
-            border-radius: 4px;
+            border-left: 3px solid #3B82F6;
+            padding: 28px 32px;
+            margin: 36px 0;
+            background: rgba(59, 130, 246, 0.05);
         }
-        
-        .situation-box p {
-            margin-bottom: 15px;
-        }
-        
+
+        .situation-box p { margin-bottom: 12px; }
+        .situation-box p:last-child { margin-bottom: 0; }
+
+        /* MARCH GRID */
         .march-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin: 50px 0;
+            gap: 2px;
+            margin: 40px 0;
+            border: 1px solid #1a1a1a;
         }
-        
+
         .march-card {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.1);
-            padding: 30px;
-            border-radius: 4px;
+            padding: 32px;
+            background: #0a0a0a;
+            border: 1px solid #1a1a1a;
         }
-        
+
         .march-phase {
-            font-size: 14px;
+            font-size: 10px;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #aaa;
-            margin-bottom: 12px;
+            letter-spacing: 3px;
+            color: #3B82F6;
+            margin-bottom: 10px;
         }
-        
+
         .march-title {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 600;
             color: #ffffff;
-            margin-bottom: 15px;
+            margin-bottom: 14px;
+            letter-spacing: -0.2px;
         }
-        
+
         .march-content {
             font-size: 14px;
-            color: #bbb;
-            line-height: 1.7;
-        }
-        
-        ul {
-            margin-left: 20px;
-            margin-bottom: 25px;
-        }
-        
-        li {
-            margin-bottom: 12px;
-            color: #ddd;
-            font-size: 15px;
-        }
-        
-        .pricing-section {
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.15);
-            padding: 50px;
-            margin: 60px 0;
-            border-radius: 4px;
-            text-align: center;
-        }
-        
-        .pricing-label {
-            font-size: 12px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: #aaa;
-            margin-bottom: 15px;
-        }
-        
-        .price-amount {
-            font-size: 52px;
-            font-weight: 700;
-            color: #ffffff;
-            margin: 20px 0;
-        }
-        
-        .price-detail {
-            font-size: 15px;
-            color: #aaa;
-            margin-bottom: 8px;
-        }
-        
-        .price-highlight {
-            font-size: 14px;
-            color: #88dd88;
-            font-weight: 600;
-            margin-top: 20px;
-        }
-        
-        .cta-text {
-            font-size: 16px;
-            color: #ddd;
-            margin-top: 40px;
+            color: #888888;
             line-height: 1.75;
         }
-        
+
+        /* WHAT YOU GET */
+        ul { list-style: none; margin: 0 0 24px 0; }
+
+        li {
+            font-size: 16px;
+            color: #cccccc;
+            padding: 14px 0;
+            border-bottom: 1px solid #111111;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            background: #3B82F6;
+            border-radius: 50%;
+        }
+
+        li:last-child { border-bottom: none; }
+
+        /* PRICING */
+        .pricing-section {
+            border: 1px solid #222222;
+            padding: 56px 48px;
+            margin: 48px 0;
+            text-align: center;
+            background: #050505;
+        }
+
+        .pricing-label {
+            font-size: 10px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #3B82F6;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .price-amount {
+            font-size: 72px;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: -2px;
+            margin: 16px 0 8px;
+            line-height: 1;
+        }
+
+        .price-detail {
+            font-size: 15px;
+            color: #666666;
+            margin-bottom: 6px;
+        }
+
+        .price-highlight {
+            font-size: 13px;
+            color: #3B82F6;
+            font-weight: 600;
+            margin-top: 18px;
+            letter-spacing: 0.3px;
+        }
+
+        .price-divider {
+            height: 1px;
+            background: #1a1a1a;
+            margin: 40px 0;
+        }
+
+        /* GUARANTEE */
+        .guarantee {
+            border-left: 3px solid #3B82F6;
+            padding: 24px 28px;
+            margin: 40px 0;
+            background: rgba(59, 130, 246, 0.05);
+        }
+
+        .guarantee-title {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #3B82F6;
+            margin-bottom: 10px;
+        }
+
+        .guarantee p { margin: 0; color: #aaaaaa; }
+
+        /* STRIPE */
         .stripe-wrapper {
-            margin: 50px 0;
-            padding: 40px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 4px;
+            margin: 56px 0;
             display: flex;
             justify-content: center;
         }
-        
+
+        /* FOOTER */
         .footer {
             margin-top: 80px;
             padding-top: 40px;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            border-top: 1px solid #111111;
             text-align: center;
-            color: #666;
-            font-size: 13px;
         }
-        
-        .guarantee {
-            background: rgba(136,221,136,0.1);
-            border-left: 4px solid #88dd88;
-            padding: 25px;
-            margin: 40px 0;
-            border-radius: 4px;
+
+        .footer p {
+            font-size: 12px;
+            color: #333333;
+            margin-bottom: 4px;
         }
-        
-        .guarantee-title {
-            font-weight: 700;
-            color: #88dd88;
-            margin-bottom: 8px;
-        }
-        
-        .guarantee p {
-            color: #bbb;
-        }
-        
-        @media (max-width: 768px) {
-            .march-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            h1 {
-                font-size: 38px;
-            }
-            
-            h2 {
-                font-size: 24px;
-            }
-            
-            .pricing-section {
-                padding: 30px;
-            }
-            
-            .price-amount {
-                font-size: 38px;
-            }
-            
-            .container {
-                padding: 50px 25px;
-            }
+
+        /* MOBILE */
+        @media (max-width: 680px) {
+            .container { padding: 48px 24px; }
+            h1 { font-size: 40px; }
+            .march-grid { grid-template-columns: 1fr; }
+            .pricing-section { padding: 36px 24px; }
+            .price-amount { font-size: 52px; }
         }
     </style>
 </head>
 <body>
     <div class="container">
+
         <header>
             <div class="logo">Wesnoski Coaching</div>
             <h1>Andrew March</h1>
             <p class="subtitle">Precision Engineering — 2027 Competition Protocol</p>
             <div class="divider"></div>
         </header>
-        
+
         <section class="section">
             <h2>Your Situation</h2>
             <div class="situation-box">
                 <p><strong>Goal:</strong> Compete in 2027 with optimized lean mass and stage conditioning.</p>
                 <p><strong>Timeline:</strong> Growth phase now → summer cut → strategic competition prep (18 months out).</p>
                 <p><strong>Context:</strong> Previously coached for ~1 year on moderate protocol (now off heavy gear). Local to Langley. High-stress outdoor labor (City utilities). Young family — need flexibility + local coaching access.</p>
-                <p><strong>Challenge:</strong> Preserve muscle during deficit, manage cortisol from physical labor + family stress, recover hormones post-protocol, and build competition-ready physique strategically.</p>
+                <p><strong>Challenge:</strong> Preserve muscle during deficit, manage cortisol from physical labor + family stress, recover hormones post-protocol, and build a competition-ready physique strategically.</p>
             </div>
         </section>
-        
+
         <section class="section">
             <h2>The MARCH Framework</h2>
-            <p>Everything we build is powered by the MARCH Method. We fix your biological foundation first, then build lasting results. Here's how it applies to you:</p>
-            
+            <p>Everything we build is powered by the MARCH Method. We fix your biological foundation first, then build results that last. Here's how it applies directly to you:</p>
+
             <div class="march-grid">
                 <div class="march-card">
-                    <div class="march-phase">🔋 Mitochondria</div>
+                    <div class="march-phase">M — Mitochondria</div>
                     <div class="march-title">Energy & Cellular Performance</div>
-                    <div class="march-content">
-                        <p>Cold exposure + outdoor manual labor = high energy demands. We optimize ATP production and fatty acid oxidation so you're fueling efficiently during your cut. Better energy = better training, better recovery.</p>
-                    </div>
+                    <div class="march-content">Cold exposure and outdoor manual labor create high energy demands. We optimize ATP production and fatty acid oxidation so you're fueling efficiently during your cut. Better energy means better training and better recovery.</div>
                 </div>
-                
+
                 <div class="march-card">
-                    <div class="march-phase">🫘 Absorption & Detox</div>
+                    <div class="march-phase">A — Absorption & Detox</div>
                     <div class="march-title">Gut & Nutrient Uptake</div>
-                    <div class="march-content">
-                        <p>Coming off heavy supplementation and gear — your gut needs optimization. We dial in liver health, gut function, and nutrient absorption so every calorie and nutrient actually works for you.</p>
-                    </div>
+                    <div class="march-content">Coming off heavy supplementation and gear, your gut needs optimization. We dial in liver health, gut function, and nutrient absorption so every calorie and nutrient actually works for you.</div>
                 </div>
-                
+
                 <div class="march-card">
-                    <div class="march-phase">💪 Resilience</div>
+                    <div class="march-phase">R — Resilience</div>
                     <div class="march-title">Stress & Recovery</div>
-                    <div class="march-content">
-                        <p>High stress from manual labor, family, and deficit training. We stabilize your stress response and adrenals so cortisol doesn't sabotage muscle preservation. HPA axis support + sleep optimization.</p>
-                    </div>
+                    <div class="march-content">Manual labor, family demands, and deficit training are a cortisol triple threat. We stabilize your stress response and adrenals so cortisol doesn't sabotage muscle preservation. HPA axis support and sleep optimization built in.</div>
                 </div>
-                
+
                 <div class="march-card">
-                    <div class="march-phase">♻️ Cycle & Signal</div>
+                    <div class="march-phase">C — Cycle & Signal</div>
                     <div class="march-title">Hormones & Neurotransmitters</div>
-                    <div class="march-content">
-                        <p>Post-gear hormone recovery and managing thyroid/testosterone levels. Full blood panel interpretation integrates directly into your protocol. We repair hormonal rhythms so you're not fighting yourself.</p>
-                    </div>
+                    <div class="march-content">Post-gear hormone recovery and thyroid/testosterone management. Full blood panel interpretation integrates directly into your protocol. We repair your hormonal rhythms so you're not fighting your own biology.</div>
                 </div>
-                
-                <div class="march-card">
-                    <div class="march-phase">🏆 Hypertrophy & Healthspan</div>
-                    <div class="march-title">Building Lean Tissue</div>
-                    <div class="march-content">
-                        <p>Build now, preserve during cuts, refine for 2027 stage. Custom training + nutrition + advanced supplementation sequenced around your competition timeline. Weekly adjustments based on real biofeedback.</p>
-                    </div>
+
+                <div class="march-card" style="grid-column: 1 / -1;">
+                    <div class="march-phase">H — Hypertrophy & Healthspan</div>
+                    <div class="march-title">Build Lean Tissue. Win in 2027.</div>
+                    <div class="march-content">Build now, preserve during the cut, refine for the 2027 stage. Custom training, nutrition, and advanced supplementation sequenced around your competition timeline. Weekly adjustments based on real biofeedback — not guesswork.</div>
                 </div>
             </div>
         </section>
-        
+
         <section class="section">
             <h2>What You Get</h2>
             <ul>
-                <li><strong>Weekly Check-Ins:</strong> Video responses to your full check-in. We review pictures, biofeedback, and make live adjustments on camera.</li>
-                <li><strong>Blood Panel Integration:</strong> We analyze your bloodwork and integrate it directly into your protocol. Not guessing — measuring.</li>
-                <li><strong>Custom App:</strong> Training, nutrition, advanced supplementation, cardio all tracked and synced. iPhone app + web access.</li>
-                <li><strong>Local Advantage:</strong> You're in Langley. So are we. Real in-person guidance at the gym — a bonus most clients don't get.</li>
-                <li><strong>Community + Education:</strong> Access to community chat, office hours every 2 Sundays, education hours breaking down your protocols.</li>
-                <li><strong>On-Demand Calls:</strong> Quick hit calls whenever you need them. No gatekeeping.</li>
-                <li><strong>Discount Network:</strong> Partner discounts for supplements and other services.</li>
+                <li><strong>Weekly Check-Ins</strong> — Video responses to your full check-in. We review your pictures, biofeedback, and make live adjustments on camera.</li>
+                <li><strong>Blood Panel Integration</strong> — We read your bloodwork and build it directly into your protocol. Not guessing. Measuring.</li>
+                <li><strong>Custom App</strong> — Training, nutrition, advanced supplementation, and cardio all tracked and synced. iPhone app and web access.</li>
+                <li><strong>Local Advantage</strong> — You're in Langley. So are we. In-person guidance at the gym. A bonus most clients don't get.</li>
+                <li><strong>Community + Education</strong> — Access to community chat, office hours every two Sundays, and education sessions breaking down your protocols.</li>
+                <li><strong>On-Demand Calls</strong> — Quick calls whenever you need them. No gatekeeping.</li>
+                <li><strong>Partner Discounts</strong> — Supplements and services at reduced cost through our network.</li>
             </ul>
         </section>
-        
+
         <section class="section">
-            <h2>Precision Engineering Protocol</h2>
-            <p>Standard international pricing: <strong>$2,000 for 3 months (weekly coaching)</strong></p>
-            <p>Your local rate (because you're serious + local):</p>
-            
+            <h2>Investment</h2>
+            <p>Standard international rate: <strong>$2,000 for 3 months</strong> (weekly coaching).</p>
+            <p>Your local rate — because you're serious and you're here:</p>
+
             <div class="pricing-section">
-                <div class="pricing-label">Month-to-Month</div>
+                <div class="pricing-label">Month to Month</div>
                 <div class="price-amount">$400</div>
-                <div class="price-detail">/month | Minimum 3 months</div>
+                <div class="price-detail">per month &nbsp;|&nbsp; minimum 3 months</div>
                 <div class="price-detail">Total: $1,200 for 3 months</div>
-                <div class="price-highlight">✓ Flexible start | Cancel after 3-month minimum only</div>
-                
-                <div style="margin-top: 40px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1);">
-                    <div class="pricing-label">OR Pay in Full</div>
-                    <div class="price-amount">$1,200</div>
-                    <div class="price-detail">3 months upfront</div>
-                    <div class="price-highlight">✓ Same rate, same value, same 3-month commitment</div>
-                </div>
+                <div class="price-highlight">Cancel after the 3-month minimum only</div>
+
+                <div class="price-divider"></div>
+
+                <div class="pricing-label">Pay in Full</div>
+                <div class="price-amount">$1,200</div>
+                <div class="price-detail">3 months upfront</div>
+                <div class="price-highlight">Same rate. Same value. Same commitment.</div>
             </div>
-            
+
             <div class="guarantee">
-                <div class="guarantee-title">🛡️ 30-Day Action Guarantee</div>
+                <div class="guarantee-title">30-Day Action Guarantee</div>
                 <p>Follow the plan. If you don't see measurable results in your first month, I'll work with you for free until you do.</p>
             </div>
         </section>
-        
+
         <section class="section">
             <h2>Next Steps</h2>
-            <p>When you're ready to start (next week is fine — get your funds straight):</p>
+            <p>When you're ready to start:</p>
             <ul>
                 <li>Click the payment button below</li>
-                <li>You can start immediately or we jump on a call to walk through specifics</li>
-                <li>Payments via Stripe — credit card, Apple Pay, or Klarna financing available</li>
-                <li>We'll build your custom plan from your baseline (training, nutrition, supps, cardio, biofeedback tracking)</li>
+                <li>Start immediately or we jump on a call to walk through the specifics</li>
+                <li>Pay via Stripe — credit card, Apple Pay, or Klarna financing available</li>
+                <li>We build your custom plan from your baseline (training, nutrition, supps, cardio, biofeedback)</li>
                 <li>Weekly check-ins start immediately</li>
             </ul>
-            
-            <p style="margin-top: 30px; font-weight: 500;">The 3-month minimum is there because we need time to build your plan and see real data. Most people see meaningful progress by month 2 — we want to make sure you get there.</p>
+            <p style="margin-top: 28px;">The 3-month minimum exists because results take time to build. Most clients see meaningful progress by month two. We want to make sure you get there.</p>
         </section>
-        
+
         <div class="stripe-wrapper">
             <script async src="https://js.stripe.com/v3/buy-button.js"></script>
             <stripe-buy-button
@@ -380,11 +374,12 @@
                 publishable-key="pk_live_51Rko7sCR8UZ9UL87cHuhgbcjd6JVj9Raz0EX6aqWFkuhyfmyBGzPMPIEqBWW3puj3AakUyM3DxgJFz8AqeEChFYg00zLxYE3Vg">
             </stripe-buy-button>
         </div>
-        
+
         <footer class="footer">
             <p>Wesnoski Coaching — Precision Engineering Protocol</p>
             <p>Built on the MARCH Method. Fix biology first. Then build results.</p>
         </footer>
+
     </div>
 </body>
 </html>
