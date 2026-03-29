@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wesnoski Coaching - Personalized Coaching Proposal for Theo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(135deg, #0a1820 0%, #0d1f2d 100%);
+            color: #f5f5f5;
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: fadeInDown 0.8s ease;
+            position: relative;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #00d4ff, transparent);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 2px;
+        }
+
+        h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+            line-height: 1.2;
+            animation: fadeInUp 0.8s ease 0.2s both;
+            font-weight: 800;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #b0b0b0;
+            margin-bottom: 30px;
+            animation: fadeInUp 0.8s ease 0.4s both;
+            font-style: italic;
+        }
+
+        .proposal-meta {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 30px;
+            font-size: 14px;
+            color: #b0b0b0;
+            animation: fadeInUp 0.8s ease 0.6s both;
+        }
+
+        .section {
+            margin-bottom: 80px;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h2 {
+            font-size: 36px;
+            margin-bottom: 30px;
+            color: #00d4ff;
+            position: relative;
+            padding-bottom: 15px;
+            font-weight: 800;
+        }
+
+        h2::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #00d4ff, #0099cc);
+            animation: expandWidth 0.8s ease forwards;
+        }
+
+        @keyframes expandWidth {
+            to { width: 80px; }
+        }
+
+        .client-context {
+            background: rgba(0, 212, 255, 0.05);
+            border-left: 4px solid #00d4ff;
+            padding: 25px;
+            margin-bottom: 30px;
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .client-context::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(0, 212, 255, 0.1) 0%, transparent 100%);
+            pointer-events: none;
+        }
+
+        .client-context h3 {
+            color: #00d4ff;
+            margin-bottom: 15px;
+            font-size: 18px;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+        }
+
+        .context-item {
+            margin-bottom: 12px;
+            color: #d0d0d0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .context-item strong {
+            color: #00d4ff;
+            font-weight: 600;
+        }
+
+        .opportunity-statement {
+            background: rgba(0, 212, 255, 0.08);
+            border-left: 4px solid #00d4ff;
+            padding: 25px;
+            margin-bottom: 30px;
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .opportunity-statement::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.1), transparent);
+            pointer-events: none;
+        }
+
+        .opportunity-statement h3 {
+            color: #00d4ff;
+            margin-bottom: 15px;
+            font-size: 18px;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+        }
+
+        .opportunity-statement p {
+            position: relative;
+            z-index: 1;
+        }
+
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .solution-card {
+            background: rgba(0, 212, 255, 0.05);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            padding: 25px;
+            border-radius: 4px;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .solution-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 212, 255, 0.05);
+            transition: left 0.6s ease;
+        }
+
+        .solution-card:hover {
+            background: rgba(0, 212, 255, 0.12);
+            border-color: rgba(0, 212, 255, 0.5);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.15);
+        }
+
+        .solution-card:hover::before {
+            left: 100%;
+        }
+
+        .solution-card h4 {
+            color: #00d4ff;
+            margin-bottom: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            position: relative;
+            z-index: 2;
+        }
+
+        .solution-card p {
+            color: #b0b0b0;
+            font-size: 14px;
+            line-height: 1.6;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cycle-framework {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.05), rgba(0, 100, 200, 0.05));
+            padding: 40px;
+            border-radius: 4px;
+            margin: 30px 0;
+            border: 1px solid rgba(0, 212, 255, 0.1);
+            position: relative;
+        }
+
+        .cycle-item {
+            margin-bottom: 25px;
+            padding-left: 30px;
+            position: relative;
+            opacity: 0;
+            transform: translateX(-20px);
+            animation: slideIn 0.6s ease forwards;
+        }
+
+        .cycle-item:nth-child(1) { animation-delay: 0.1s; }
+        .cycle-item:nth-child(2) { animation-delay: 0.2s; }
+        .cycle-item:nth-child(3) { animation-delay: 0.3s; }
+        .cycle-item:nth-child(4) { animation-delay: 0.4s; }
+
+        .cycle-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .cycle-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 5px;
+            width: 8px;
+            height: 8px;
+            background: #00d4ff;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+        }
+
+        .cycle-item h4 {
+            color: #00d4ff;
+            font-size: 16px;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .cycle-item p {
+            color: #b0b0b0;
+            font-size: 14px;
+        }
+
+        .deliverables {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .deliverable {
+            background: rgba(0, 212, 255, 0.05);
+            padding: 25px;
+            border-radius: 4px;
+            text-align: center;
+            border: 1px solid rgba(0, 212, 255, 0.15);
+            opacity: 0;
+            transform: scale(0.9);
+            animation: popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        .deliverable:nth-child(1) { animation-delay: 0.1s; }
+        .deliverable:nth-child(2) { animation-delay: 0.2s; }
+        .deliverable:nth-child(3) { animation-delay: 0.3s; }
+        .deliverable:nth-child(4) { animation-delay: 0.4s; }
+        .deliverable:nth-child(5) { animation-delay: 0.5s; }
+        .deliverable:nth-child(6) { animation-delay: 0.6s; }
+
+        .deliverable:hover {
+            background: rgba(0, 212, 255, 0.12);
+            border-color: rgba(0, 212, 255, 0.4);
+            transform: translateY(-8px);
+        }
+
+        .deliverable h4 {
+            color: #00d4ff;
+            margin-bottom: 10px;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .deliverable p {
+            color: #b0b0b0;
+            font-size: 12px;
+        }
+
+        .pricing-section {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.08), rgba(0, 100, 200, 0.08));
+            padding: 50px 40px;
+            border-radius: 4px;
+            text-align: center;
+            margin: 40px 0;
+            border: 1px solid rgba(0, 212, 255, 0.15);
+            position: relative;
+        }
+
+        .pricing-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.1), transparent);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .pricing-box {
+            background: rgba(10, 24, 32, 0.8);
+            padding: 40px;
+            border: 2px solid #00d4ff;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.1);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: slideUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s forwards;
+        }
+
+        .price {
+            font-size: 56px;
+            color: #00d4ff;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .price-desc {
+            color: #b0b0b0;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .price-highlight {
+            background: rgba(0, 212, 255, 0.1);
+            padding: 15px;
+            border-radius: 4px;
+            color: #00d4ff;
+            font-weight: 600;
+            margin-bottom: 15px;
+            border-left: 3px solid #00d4ff;
+        }
+
+        .timeline {
+            background: rgba(0, 212, 255, 0.05);
+            padding: 30px;
+            border-radius: 4px;
+            border: 1px solid rgba(0, 212, 255, 0.15);
+            margin: 30px 0;
+            opacity: 0;
+            transform: scale(0.95);
+            animation: popIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        .timeline h3 {
+            color: #00d4ff;
+            margin-bottom: 20px;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateX(-20px);
+            animation: slideIn 0.6s ease forwards;
+        }
+
+        .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.3s; }
+        .timeline-item:nth-child(4) { animation-delay: 0.4s; }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-dot {
+            width: 12px;
+            height: 12px;
+            background: #00d4ff;
+            border-radius: 50%;
+            margin-top: 4px;
+            flex-shrink: 0;
+            box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+        }
+
+        .timeline-content h4 {
+            color: #00d4ff;
+            margin-bottom: 5px;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .timeline-content p {
+            color: #b0b0b0;
+            font-size: 13px;
+        }
+
+        .guarantee {
+            background: rgba(0, 212, 255, 0.05);
+            border: 2px solid #00d4ff;
+            padding: 35px;
+            border-radius: 4px;
+            margin: 50px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: scale(0.95);
+            animation: popIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        .guarantee::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.1), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        .guarantee h3 {
+            color: #00d4ff;
+            margin-bottom: 12px;
+            font-size: 22px;
+            font-weight: 800;
+            position: relative;
+            z-index: 1;
+        }
+
+        .guarantee p {
+            color: #b0b0b0;
+            font-size: 16px;
+            position: relative;
+            z-index: 1;
+            line-height: 1.7;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin: 60px 0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 18px 50px;
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            color: #0a1820;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 16px;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: left 0.5s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.4);
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .payment-section {
+            background: rgba(0, 212, 255, 0.05);
+            padding: 50px 40px;
+            border-radius: 4px;
+            border: 2px solid rgba(0, 212, 255, 0.2);
+            margin: 50px 0;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(40px);
+            animation: slideUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.5s forwards;
+        }
+
+        .payment-section h3 {
+            color: #00d4ff;
+            margin-bottom: 30px;
+            font-size: 26px;
+            font-weight: 800;
+        }
+
+        stripe-buy-button {
+            display: block;
+            width: 100%;
+            margin: 30px 0;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 100px;
+            padding-top: 50px;
+            border-top: 1px solid rgba(0, 212, 255, 0.2);
+            color: #b0b0b0;
+            font-size: 14px;
+            opacity: 0;
+            animation: fadeIn 0.8s ease 0.7s forwards;
+        }
+
+        .footer a {
+            color: #00d4ff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+            color: #fff;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes popIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .highlight {
+            color: #00d4ff;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 36px;
+            }
+
+            h2 {
+                font-size: 24px;
+            }
+
+            .price {
+                font-size: 36px;
+            }
+
+            .proposal-meta {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .container {
+                padding: 20px 15px;
+            }
+
+            .timeline-item {
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">WESNOSKI COACHING</div>
+            <h1>Your Advanced Cycle & Optimization Blueprint</h1>
+            <p class="subtitle">Strategic compound protocols built on data, liver health, and sustainable results</p>
+            <div class="proposal-meta">
+                <div>📋 Proposal</div>
+                <div>👤 For: Theo</div>
+                <div>📅 Valid for 30 days</div>
+            </div>
+        </header>
+
+        <div class="section">
+            <h2>Who You Are</h2>
+            <div class="client-context">
+                <h3>Your Profile</h3>
+                <div class="context-item"><strong>Background:</strong> Law degree + CHEK certified personal trainer & holistic lifestyle coach</div>
+                <div class="context-item"><strong>Experience:</strong> 10+ years optimization, multiple compound cycles, peptide research</div>
+                <div class="context-item"><strong>Current Stack:</strong> Test + Masteron + HGH + TB-500 (with previous Tren experience)</div>
+                <div class="context-item"><strong>Body Composition:</strong> Visible abs for first time with current stack; visibly lean</div>
+                <div class="context-item"><strong>Health History:</strong> Family insulin resistance (managed), previously elevated liver values (addressed)</div>
+                <div class="context-item"><strong>Biomarkers:</strong> Fasting glucose historically 121-125, brought down to 80s with extended fasts + current stack</div>
+                <div class="context-item"><strong>Recovery Tools:</strong> Sauna, cold plunge, sauna protocol, peptides (BPC-157, TB-500)</div>
+                <div class="context-item"><strong>Mindset:</strong> Data-driven experimenter, self-aware about risk/reward, looking for conservative guidance without compromising goals</div>
+            </div>
+
+            <div class="opportunity-statement">
+                <h3>✨ The Opportunity</h3>
+                <p>You've figured out how to get lean while building muscle—a rare combination. You've tested compounds, tracked bloodwork, and optimized your protocol through trial. But you're still making decisions in isolation. The opportunity here is <span class="highlight">systematization</span>: taking everything you know works, removing the guesswork on cycles, protecting your liver and hormones, and creating a sustainable framework for the next 5-10 years of advanced training.</p>
+                <p style="margin-top: 15px;">You don't need someone to tell you to avoid Tren. You need someone who understands why you want it, how to run it safely if you choose to, and what alternatives exist that give you 90% of the benefits with 10% of the risk.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>What We're Building</h2>
+            <div class="solution-grid">
+                <div class="solution-card">
+                    <h4>🧬 Cycle Optimization</h4>
+                    <p>Strategically designed compound stacks (with or without Tren) that minimize liver damage, protect cardiovascular health, and deliver the aggression + growth you're after.</p>
+                </div>
+                <div class="solution-card">
+                    <h4>🩸 Bloodwork Mastery</h4>
+                    <p>Full panel interpretation + actionable adjustments. Liver values, lipids, hormones, glucose—we'll know exactly where you stand and what's working.</p>
+                </div>
+                <div class="solution-card">
+                    <h4>💪 Training Architecture</h4>
+                    <p>Custom split (1x/week frequency vs. higher frequency) built around your cycle phase, recovery capacity, and aesthetic goals.</p>
+                </div>
+                <div class="solution-card">
+                    <h4>🔬 Protocol Fine-Tuning</h4>
+                    <p>Micro-dosing strategies (like 50mg Tren/week), peptide stacking, nootropic protocols—all individualized based on your response.</p>
+                </div>
+                <div class="solution-card">
+                    <h4>⚖️ Risk Mitigation</h4>
+                    <p>Liver support, cardiovascular monitoring, water/electrolyte management, sauna protocol optimization—we protect while you progress.</p>
+                </div>
+                <div class="solution-card">
+                    <h4>📲 Daily Execution</h4>
+                    <p>Everything in one app: training splits, nutrition, daily peptide/compound dosing, bloodwork tracking, live coaching access.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Your Cycle Strategy</h2>
+            <p style="margin-bottom: 20px;">Based on your goals and constraints, here's what we'll build:</p>
+            <div class="cycle-framework">
+                <div class="cycle-item">
+                    <h4>Phase 1: Assessment & Baseline (Weeks 1-2)</h4>
+                    <p>You get your bloodwork. We analyze everything: liver values, hormones, glucose, lipids. We assess your current training volume and body composition. We establish what "healthy" baseline looks like for YOU.</p>
+                </div>
+                <div class="cycle-item">
+                    <h4>Phase 2: Cycle Design (Weeks 3-4)</h4>
+                    <p>Based on your results, we design your cycle. If you want Tren: we micro-dose it (50-100mg/week) stacked with Test + NPP/Masteron. If you prefer alternatives: we explore Halo (pre-workout pulse), higher HGH, or other compounds that give aggression without neurotoxicity. Everything's dosed strategically.</p>
+                </div>
+                <div class="cycle-item">
+                    <h4>Phase 3: Execution & Monitoring (Weeks 5-16)</h4>
+                    <p>12-14 week cycle with weekly check-ins. We adjust training intensity, nutrition, peptides, and compounds based on how you're responding. Monthly bloodwork at weeks 6, 10, and end of cycle. Nothing is guesswork.</p>
+                </div>
+                <div class="cycle-item">
+                    <h4>Phase 4: Post-Cycle & Recovery (Weeks 17-24)</h4>
+                    <p>Proper PCT + liver recovery protocol. Maintain your lean mass while bringing your bloodwork back to baseline. Plan your next cycle or transition to maintenance TRT.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>What You Get</h2>
+            <div class="deliverables">
+                <div class="deliverable">
+                    <h4>📱 Advanced App</h4>
+                    <p>Compound dosing, peptide timing, training splits, nutrition, daily tracking—all integrated.</p>
+                </div>
+                <div class="deliverable">
+                    <h4>🩸 Bloodwork Analysis</h4>
+                    <p>Full PDF + video breakdown. We read your values the way a functional health doc would, but for performance optimization.</p>
+                </div>
+                <div class="deliverable">
+                    <h4>📹 Weekly Video Check-Ins</h4>
+                    <p>You send progress pics + biofeedback. I respond with video analyzing your response, adjusting compounds/training/nutrition.</p>
+                </div>
+                <div class="deliverable">
+                    <h4>💬 24/7 Access</h4>
+                    <p>Questions about sides, compound interactions, whether to adjust dosing—DM me directly through the app. I respond within hours.</p>
+                </div>
+                <div class="deliverable">
+                    <h4>🧬 Peptide Library</h4>
+                    <p>16-page guides on 21+ peptides. Everything from BPC-157 to TB-500 to emerging compounds. Updated constantly as new research drops.</p>
+                </div>
+                <div class="deliverable">
+                    <h4>🎓 Community + Education</h4>
+                    <p>Live sessions every other Sunday. Share your wins, ask questions, learn from other advanced athletes in the program.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Your Timeline</h2>
+            <div class="timeline">
+                <h3>Next 2-4 Weeks to Go-Live</h3>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>This Week: Blood Work Draw</h4>
+                        <p>3 days off training, fully hydrated. Results back in ~7 days.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>Week 2: Get TRT Prescription</h4>
+                        <p>With your bloodwork + our telehealth doctor, get official TRT script for travel + compliance.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>Weeks 2-3: Cycle Design Call</h4>
+                        <p>You send bloodwork + photos. We design your 12-14 week cycle. You decide: Tren micro-dose, alternatives, or something else.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>Week 4: Go Live</h4>
+                        <p>You're on the app. First training session on new protocol. Weekly check-ins start immediately. Bloodwork in 4-6 weeks.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Investment & Expected Outcomes</h2>
+            <div class="pricing-section">
+                <div class="pricing-box">
+                    <div class="price">$1,200</div>
+                    <div class="price-desc">3-month minimum commitment</div>
+                    <div class="price-highlight">~$400/month for the level of detail, risk mitigation, and daily access you're getting. Sourcing, TRT access, bloodwork coaching—all included.</div>
+                    <p style="color: #b0b0b0;">Secure payment via Stripe. Monthly option ($500) also available, but you'll need minimum 3 months anyway for a full cycle.</p>
+                </div>
+
+                <h3 style="color: #00d4ff; margin-top: 30px; margin-bottom: 20px;">What 12-14 Weeks Will Deliver</h3>
+                <div style="text-align: left; display: inline-block;">
+                    <div style="color: #b0b0b0; margin-bottom: 15px;">✓ Body Composition: <span class="highlight">10-18 lbs lean muscle gain</span> while staying 8-12% body fat</div>
+                    <div style="color: #b0b0b0; margin-bottom: 15px;">✓ Strength: <span class="highlight">20-35% increase on major lifts</span> (with proper training architecture)</div>
+                    <div style="color: #b0b0b0; margin-bottom: 15px;">✓ Bloodwork: <span class="highlight">Liver values normal</span>, lipids optimized, hormones stable</div>
+                    <div style="color: #b0b0b0; margin-bottom: 15px;">✓ Aggression/Drive: <span class="highlight">Sustained gym intensity</span> without mood instability (even on Tren micro-dose if chosen)</div>
+                    <div style="color: #b0b0b0;">✓ Knowledge: <span class="highlight">Full understanding of why every decision was made</span> so you can optimize your own cycles in the future</div>
+                </div>
+            </div>
+
+            <div class="guarantee">
+                <h3>🛡️ 30-Day Action Guarantee</h3>
+                <p>If you commit to the plan and don't see measurable progress in your first month (better bloodwork, noticeable strength increases, visible body composition shift), I'll work with you for free until you do. Results guaranteed.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Why This Matters Right Now</h2>
+            <p style="margin-bottom: 20px;">You're at a unique point in your training journey. You've got:</p>
+            <ul style="margin-left: 20px; color: #b0b0b0; margin-bottom: 20px;">
+                <li style="margin-bottom: 10px;">✓ Advanced knowledge (but working in isolation)</li>
+                <li style="margin-bottom: 10px;">✓ A proven stack (but no strategic cycle design)</li>
+                <li style="margin-bottom: 10px;">✓ The discipline to follow plans (but no one validating your bloodwork reads)</li>
+                <li>✓ The resources (but uncertainty on safest protocols)</li>
+            </ul>
+            <p style="color: #b0b0b0;">The gap isn't knowledge. It's systematization. You're about to invest thousands in compounds and peptides over the next 12-24 months. Spend $400/month on someone who makes sure that money translates to results <strong>without damaging your health</strong>.</p>
+            <p style="margin-top: 20px; color: #b0b0b0;">Your previous coach charged $1,000/month but gave you access + hand-holding. I charge $400/month and I give you the same (plus better protocols). That's 60% savings and 20% better outcomes.</p>
+        </div>
+
+        <div class="section">
+            <h2>Next Step: Lock In Your Spot</h2>
+            <p style="margin-bottom: 30px; text-align: center; color: #b0b0b0; font-size: 16px;">When you're ready (after bloodwork comes back, budget confirmed), click the button below. You'll be on-boarded same day and we'll schedule your cycle design call.</p>
+        </div>
+
+        <div class="payment-section">
+            <h3>Enroll in Wesnoski Coaching</h3>
+            <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+            <stripe-buy-button
+                buy-button-id="buy_btn_1TGMLuCR8UZ9UL87xxyX8pGz"
+                publishable-key="pk_live_51Rko7sCR8UZ9UL87cHuhgbcjd6JVj9Raz0EX6aqWFkuhyfmyBGzPMPIEqBWW3puj3AakUyM3DxgJFz8AqeEChFYg00zLxYE3Vg">
+            </stripe-buy-button>
+        </div>
+
+        <div class="footer">
+            <p>Questions before committing? Reply to this email or reach out directly.</p>
+            <p style="margin-top: 15px;">
+                <strong>Farren Brown</strong> | Wesnoski Coaching<br>
+                Vancouver, BC 🇨🇦 | <a href="mailto:farren@wesnoskicoaching.com">farren@wesnoskicoaching.com</a><br>
+                <a href="https://instagram.com/wesnoski.coaching">@wesnoski.coaching</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Scroll-triggered animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Stagger solution cards on scroll
+        const solutionCards = document.querySelectorAll('.solution-card');
+        solutionCards.forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            
+            const cardObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.style.transition = 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)';
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        }, index * 100);
+                    }
+                });
+            }, observerOptions);
+
+            cardObserver.observe(card);
+        });
+
+        // Counter animation for price
+        const price = document.querySelector('.price');
+        if (price) {
+            const priceObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+                        entry.target.classList.add('counted');
+                        animateCounter(entry.target, 1200, 1000);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            priceObserver.observe(price);
+        }
+
+        function animateCounter(element, target, duration) {
+            const start = 0;
+            const increment = target / (duration / 16);
+            let current = start;
+
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = '$' + target.toLocaleString();
+                    clearInterval(timer);
+                } else {
+                    element.textContent = '$' + Math.floor(current).toLocaleString();
+                }
+            }, 16);
+        }
+    </script>
+</body>
+</html>
